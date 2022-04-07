@@ -147,13 +147,6 @@ const Sidebar = (props) => {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/theme/team-1-800x800.jpg")
-                        .default
-                    }
-                  />
                 </span>
               </Media>
             </DropdownToggle>

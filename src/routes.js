@@ -15,19 +15,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Index from "views/Index.js";
 import Tables from "views/Tables.js";
 
 var routes = [
   {
-    path: "/Stands",
-    name: "Stands",
-    icon: "ni ni-tv-2 text-primary",
-    component: Index,
-    layout: "/admin",
-  },
-  {
-    path: "/tables",
+    path: "/turns",
     name: "Turnos",
     icon: "ni ni-bullet-list-67 text-red",
     component: Tables,

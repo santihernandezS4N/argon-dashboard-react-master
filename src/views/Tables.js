@@ -17,218 +17,165 @@
 */
 // reactstrap components
 import {
-  Badge,
   Card,
   CardHeader,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  Media,
-  Progress,
   Table,
   Container,
-  Row,
-  UncontrolledTooltip,
+  Row, Col, CardBody, Button,
 } from "reactstrap";
-// core components
+import {useState} from "react";
 
-const Tables = () => {
+
+class Turno {
+  constructor(time, stand, number) {
+    this.time = time;
+    this.stand = stand;
+    this.number = number
+  }
+}
+
+const TableRow  = ({turnList}) => {
   return (
     <>
-      <Container className="mt--7" fluid>
-        {/* Table */}
-        <Row>
-          <div className="col">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <h3 className="mb-0">Card tables</h3>
-              </CardHeader>
-              <Table className="align-items-center table-flush" responsive>
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Project</th>
-                    <th scope="col">Budget</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Users</th>
-                    <th scope="col">Completion</th>
-                    <th scope="col" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      <Media className="align-items-center">
-                        <a
-                          className="avatar rounded-circle mr-3"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <img
-                            alt="..."
-                            src={
-                              require("../assets/img/theme/bootstrap.jpg")
-                                .default
-                            }
-                          />
-                        </a>
-                        <Media>
-                          <span className="mb-0 text-sm">
-                            Argon Design System
-                          </span>
-                        </Media>
-                      </Media>
-                    </th>
-                    <td>$2,500 USD</td>
-                    <td>
-                      <Badge color="" className="badge-dot mr-4">
-                        <i className="bg-warning" />
-                        pending
-                      </Badge>
-                    </td>
-                    <td>
-                      <div className="avatar-group">
-                        <a
-                          className="avatar avatar-sm"
-                          href="#pablo"
-                          id="tooltip742438047"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <img
-                            alt="..."
-                            className="rounded-circle"
-                            src={
-                              require("../assets/img/theme/team-1-800x800.jpg")
-                                .default
-                            }
-                          />
-                        </a>
-                        <UncontrolledTooltip
-                          delay={0}
-                          target="tooltip742438047"
-                        >
-                          Ryan Tompson
-                        </UncontrolledTooltip>
-                        <a
-                          className="avatar avatar-sm"
-                          href="#pablo"
-                          id="tooltip941738690"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <img
-                            alt="..."
-                            className="rounded-circle"
-                            src={
-                              require("../assets/img/theme/team-2-800x800.jpg")
-                                .default
-                            }
-                          />
-                        </a>
-                        <UncontrolledTooltip
-                          delay={0}
-                          target="tooltip941738690"
-                        >
-                          Romina Hadid
-                        </UncontrolledTooltip>
-                        <a
-                          className="avatar avatar-sm"
-                          href="#pablo"
-                          id="tooltip804044742"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <img
-                            alt="..."
-                            className="rounded-circle"
-                            src={
-                              require("../assets/img/theme/team-3-800x800.jpg")
-                                .default
-                            }
-                          />
-                        </a>
-                        <UncontrolledTooltip
-                          delay={0}
-                          target="tooltip804044742"
-                        >
-                          Alexander Smith
-                        </UncontrolledTooltip>
-                        <a
-                          className="avatar avatar-sm"
-                          href="#pablo"
-                          id="tooltip996637554"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <img
-                            alt="..."
-                            className="rounded-circle"
-                            src={
-                              require("../assets/img/theme/team-4-800x800.jpg")
-                                .default
-                            }
-                          />
-                        </a>
-                        <UncontrolledTooltip
-                          delay={0}
-                          target="tooltip996637554"
-                        >
-                          Jessica Doe
-                        </UncontrolledTooltip>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <span className="mr-2">60%</span>
-                        <div>
-                          <Progress
-                            max="100"
-                            value="60"
-                            barClassName="bg-danger"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                    <td className="text-right">
-                      <UncontrolledDropdown>
-                        <DropdownToggle
-                          className="btn-icon-only text-light"
-                          href="#pablo"
-                          role="button"
-                          size="sm"
-                          color=""
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <i className="fas fa-ellipsis-v" />
-                        </DropdownToggle>
-                        <DropdownMenu className="dropdown-menu-arrow" right>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Action
-                          </DropdownItem>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Another action
-                          </DropdownItem>
-                          <DropdownItem
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Something else here
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card>
-          </div>
-        </Row>
-      </Container>
+      {turnList.map(turno =>
+        <tbody>
+        <tr>
+          <td>
+            {turno.time}
+          </td>
+          <td>
+            <Col className="col-auto">
+              <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                <i className="circle" />
+                <span style={{ position: "absolute" }}>{turno.stand}</span>
+              </div>
+            </Col>
+          </td>
+          <td>
+            {turno.number}
+          </td>
+        </tr>
+        </tbody>
+        )
+      }
     </>
   );
+}
+
+const STANDS1 = ["S1", "S2", "S3", "S4"];
+const STANDS2 = ["S5", "S6", "S7", "S8"];
+
+
+
+const Header = ({turnList, useTurnList, actualTurn, useActualTurn}) => {
+  console.log("turnList",turnList)
+  const Funcion = (number) => {
+    let date = new Date()
+    let turno = new Turno(date.getHours() + ":" + date.getMinutes() ,number, actualTurn )
+    useActualTurn(actualTurn + 1)
+    turnList.unshift(turno)
+    useTurnList(turnList)
+    console.log(turnList)
+  }
+  const cards1 = STANDS1.map(number =>
+      <Col lg="6" xl="3">
+        <Card className="card-stats mb-4 mb-xl-0">
+          <CardBody>
+            <Row>
+              <Button type="button" class="btn btn-info" onClick = {() => {
+                Funcion(number)
+              }}>
+                Siguiente
+              </Button>
+              <Col className="col-auto">
+                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                  <i className="circle" />
+                  <span style={{ position: "absolute" }}>{number}</span>
+                </div>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
+      </Col>
+  );
+  const cards2 = STANDS2.map(number =>
+      <Col lg="6" xl="3">
+        <Card className="card-stats mb-4 mb-xl-0">
+          <CardBody>
+            <Row>
+              <Button type="button" class="btn btn-info" onClick = {() => {
+                Funcion(number)
+              }} >
+                Siguiente
+              </Button>
+              <Col className="col-auto">
+                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                  <i className="circle" />
+                  <span style={{ position: "absolute" }}>{number}</span>
+                </div>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
+      </Col>
+  );
+  return (
+      <>
+        <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
+          <Container fluid>
+            <div className="header-body">
+              {/* Card stats */}
+              <Row>
+                {cards1}
+              </Row>
+              <Row>
+                <p></p>
+              </Row>
+              <Row>
+                {cards2}
+              </Row>
+            </div>
+          </Container>
+        </div>
+      </>
+  );
 };
+
+
+
+
+const Tables = () => {
+  const[turnList, useTurnList]  = useState([])
+  const[actualTurn, useActualTurn]  = useState(1)
+  return (
+      <>
+        <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
+          <Container className="mt--7" fluid>
+            <Row>
+              <div className="col">
+                <Card className="shadow">
+                  <CardHeader className="border-0">
+                    <h3 className="mb-0">Turnos</h3>
+                  </CardHeader>
+                    <Table className="align-items-center table-flush " responsive style={{'lenght': '300px','overflow':'scroll'}}  >
+                      <thead className="thead-light">
+                      <tr>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Stand</th>
+                        <th scope="col">Turno</th>
+                      </tr>
+                      </thead>
+                      <TableRow turnList={turnList}></TableRow>
+                    </Table>
+                </Card>
+              </div>
+            </Row>
+          </Container>
+        </div>
+        <Header turnList={turnList} useTurnList={useTurnList} actualTurn={actualTurn} useActualTurn={useActualTurn}/>
+      </>
+  );
+};
+
 
 export default Tables;
